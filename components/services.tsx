@@ -1,3 +1,5 @@
+"use client"
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Scissors, PenTool, Palette, BedDouble as Needle } from "lucide-react"
@@ -34,6 +36,13 @@ export function Services() {
     },
   ]
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact")
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   return (
     <section id="services" className="py-20">
       <div className="container mx-auto px-4">
@@ -64,7 +73,7 @@ export function Services() {
                     </li>
                   ))}
                 </ul>
-                <Button variant="outline" className="w-full bg-transparent">
+                <Button variant="outline" className="w-full bg-transparent" onClick={scrollToContact}>
                   Learn More
                 </Button>
               </CardContent>

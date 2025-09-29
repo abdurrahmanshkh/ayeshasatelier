@@ -1,7 +1,24 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Palette, Heart } from "lucide-react"
+import { ArrowRight, Heart } from "lucide-react"
+import Image from "next/image"
 
 export function Hero() {
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact")
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
+  const scrollToGallery = () => {
+    const gallerySection = document.getElementById("gallery")
+    if (gallerySection) {
+      gallerySection.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Elements */}
@@ -16,8 +33,14 @@ export function Hero() {
         <div className="max-w-4xl mx-auto">
           {/* Logo/Brand Mark */}
           <div className="mb-8 flex justify-center">
-            <div className="w-20 h-20 rounded-full gradient-bg flex items-center justify-center shadow-lg">
-              <Palette className="w-10 h-10 text-white" />
+            <div className="w-24 h-24 rounded-full overflow-hidden shadow-lg border-4 border-white/20">
+              <Image
+                src="/images/logo.jpg"
+                alt="Ayesha's Atelier Logo"
+                width={96}
+                height={96}
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 
@@ -39,11 +62,11 @@ export function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6" onClick={scrollToContact}>
               Order Custom Artwork
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6 bg-transparent">
+            <Button variant="outline" size="lg" className="text-lg px-8 py-6 bg-transparent" onClick={scrollToGallery}>
               View Gallery
             </Button>
           </div>

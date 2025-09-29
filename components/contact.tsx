@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Phone, Mail, Instagram } from "lucide-react"
+import { Phone, Mail, Instagram, CheckCircle, AlertCircle } from "lucide-react"
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -19,10 +19,12 @@ export function Contact() {
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSubmitStatus("idle")
 
     try {
       const response = await fetch("/api/contact", {
@@ -34,13 +36,14 @@ export function Contact() {
       })
 
       if (response.ok) {
-        alert("Thank you for your message! We'll get back to you soon.")
+        setSubmitStatus("success")
         setFormData({ name: "", email: "", phone: "", service: "", message: "" })
       } else {
-        alert("There was an error sending your message. Please try again.")
+        setSubmitStatus("error")
       }
     } catch (error) {
-      alert("There was an error sending your message. Please try again.")
+      console.error("Contact form error:", error)
+      setSubmitStatus("error")
     } finally {
       setIsSubmitting(false)
     }
@@ -70,6 +73,20 @@ export function Contact() {
               <CardTitle className="text-2xl font-serif">Send us a Message</CardTitle>
             </CardHeader>
             <CardContent>
+              {submitStatus === "success" && (
+                <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center text-green-800">
+                  <CheckCircle className="w-5 h-5 mr-2" />
+                  Thank you for your message! We'll get back to you soon.
+                </div>
+              )}
+
+              {submitStatus === "error" && (
+                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center text-red-800">
+                  <AlertCircle className="w-5 h-5 mr-2" />
+                  There was an error sending your message. Please try again or contact us directly.
+                </div>
+              )}
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>

@@ -1,4 +1,5 @@
 import { Heart, Instagram, Mail, Phone } from "lucide-react"
+import Image from "next/image"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -9,9 +10,15 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                <span className="text-white font-bold text-lg font-serif">A</span>
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-12 h-12 rounded-full overflow-hidden shadow-md">
+                <Image
+                  src="/images/logo.jpg"
+                  alt="Ayesha's Atelier Logo"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
                 <h3 className="text-xl font-serif font-bold">Ayesha's Atelier</h3>

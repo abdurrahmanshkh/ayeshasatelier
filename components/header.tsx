@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Menu, X, ShoppingBag } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -25,6 +26,14 @@ export function Header() {
     { href: "#contact", label: "Contact" },
   ]
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact")
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" })
+    }
+    setIsMenuOpen(false)
+  }
+
   return (
     <header
       className={cn(
@@ -35,9 +44,15 @@ export function Header() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-full gradient-bg flex items-center justify-center">
-              <span className="text-white font-bold text-lg font-serif">A</span>
+          <div className="flex items-center space-x-3">
+            <div className="w-12 h-12 rounded-full overflow-hidden shadow-md">
+              <Image
+                src="/images/logo.jpg"
+                alt="Ayesha's Atelier Logo"
+                width={48}
+                height={48}
+                className="w-full h-full object-cover"
+              />
             </div>
             <div>
               <h1 className="text-xl font-serif font-bold text-foreground">Ayesha's Atelier</h1>
@@ -60,10 +75,9 @@ export function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" size="sm">
-              <ShoppingBag className="w-4 h-4 mr-2" />0
+            <Button className="bg-primary hover:bg-primary/90" onClick={scrollToContact}>
+              Order Custom Artwork
             </Button>
-            <Button className="bg-primary hover:bg-primary/90">Order Custom Artwork</Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -86,7 +100,9 @@ export function Header() {
                   {item.label}
                 </a>
               ))}
-              <Button className="mt-4 w-full">Order Custom Artwork</Button>
+              <Button className="mt-4 w-full" onClick={scrollToContact}>
+                Order Custom Artwork
+              </Button>
             </nav>
           </div>
         )}

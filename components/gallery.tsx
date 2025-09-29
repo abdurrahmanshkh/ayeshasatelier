@@ -10,10 +10,25 @@ export function Gallery() {
   const filters = ["All", "Crochet", "Sketches", "Paintings", "Embroidery"]
 
   const galleryItems = [
-    { id: 1, category: "Crochet", title: "Baby Blanket", image: "/beautiful-handmade-crochet-baby-blanket-in-soft-co.jpg" },
-    { id: 2, category: "Sketches", title: "Portrait Drawing", image: "/detailed-pencil-portrait-sketch-of-a-person.jpg" },
+    {
+      id: 1,
+      category: "Crochet",
+      title: "Baby Blanket",
+      image: "/beautiful-handmade-crochet-baby-blanket-in-soft-co.jpg",
+    },
+    {
+      id: 2,
+      category: "Sketches",
+      title: "Portrait Drawing",
+      image: "/detailed-pencil-portrait-sketch-of-a-person.jpg",
+    },
     { id: 3, category: "Paintings", title: "Floral Art", image: "/beautiful-watercolor-floral-painting.jpg" },
-    { id: 4, category: "Embroidery", title: "Decorative Piece", image: "/intricate-embroidery-work-with-floral-patterns.jpg" },
+    {
+      id: 4,
+      category: "Embroidery",
+      title: "Decorative Piece",
+      image: "/intricate-embroidery-work-with-floral-patterns.jpg",
+    },
     { id: 5, category: "Crochet", title: "Scarf Collection", image: "/colorful-handmade-crochet-scarves.jpg" },
     { id: 6, category: "Sketches", title: "Pet Portrait", image: "/charming-pencil-sketch-of-a-cute-dog.jpg" },
     { id: 7, category: "Paintings", title: "Abstract Art", image: "/modern-abstract-painting-with-soft-colors.jpg" },
@@ -22,6 +37,13 @@ export function Gallery() {
 
   const filteredItems =
     activeFilter === "All" ? galleryItems : galleryItems.filter((item) => item.category === activeFilter)
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact")
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" })
+    }
+  }
 
   return (
     <section id="gallery" className="py-20 bg-muted/30">
@@ -73,7 +95,7 @@ export function Gallery() {
         </div>
 
         <div className="text-center mt-12">
-          <Button size="lg" variant="outline">
+          <Button size="lg" variant="outline" onClick={scrollToContact}>
             View Full Portfolio
           </Button>
         </div>
