@@ -140,11 +140,11 @@ export function Contact() {
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="crochet">Custom Crochet</SelectItem>
-                        <SelectItem value="sketching">Portrait Sketching</SelectItem>
-                        <SelectItem value="painting">Custom Painting</SelectItem>
-                        <SelectItem value="embroidery">Embroidery & Stitching</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
+                        <SelectItem value="Crochet">Custom Crochet</SelectItem>
+                        <SelectItem value="Sketching">Portrait Sketching</SelectItem>
+                        <SelectItem value="Painting">Custom Painting</SelectItem>
+                        <SelectItem value="Embroidery">Embroidery & Stitching</SelectItem>
+                        <SelectItem value="Other">Other</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
