@@ -66,13 +66,16 @@ export function Contact() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        {/* prevent grid children from stretching to the same height */}
+        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-start">
           {/* Contact Form */}
           <Card>
             <CardHeader>
               <CardTitle className="text-2xl font-serif">Send us a Message</CardTitle>
             </CardHeader>
-            <CardContent>
+
+            {/* explicit p-6 to match other cards and avoid extra bottom spacing */}
+            <CardContent className="p-6">
               {submitStatus === "success" && (
                 <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center text-green-800">
                   <CheckCircle className="w-5 h-5 mr-2" />
