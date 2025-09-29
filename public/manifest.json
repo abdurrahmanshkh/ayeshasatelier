@@ -1,0 +1,28 @@
+{
+  "name": "Ayesha's Atelier - Custom Handmade Art",
+  "short_name": "Ayesha's Atelier",
+  "description": "Custom artwork, handmade crochet creations, and beautiful sketches",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#FFB6C1",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
