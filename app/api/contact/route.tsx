@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
     // Here you would integrate with Brevo Mail API
     // For now, we'll simulate the email sending
     const emailData = {
-      sender: { email: "noreply@ayeshasatelier.com", name: "Ayesha's Atelier" },
+      sender: { email: "transactionalerts@yahoo.com", name: "Ayesha's Atelier" },
       to: [{ email: "ateliar.ayesha@gmail.com", name: "Ayesha" }],
       subject: `New Contact Form Submission - ${service}`,
       htmlContent: `
